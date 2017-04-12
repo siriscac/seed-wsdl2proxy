@@ -23,21 +23,19 @@ var opts = {
     debug: gutil.env.debug    
 }
 
-gulp.task('download-apiproxy', function() {
-    	
-});
-
-gulp.task('deploy',['download-apiproxy'], function(){
+gulp.task('deploy', function(){
     opts.api = PROXY_NAME
     opts.proxies = PROXY_NAME
     opts.environments = 'test'
+	console.log("WSDL Url: " + opts.wsdlUrl);
+	console.log("Binding: " + opts.binding);
 
 	var url = 'https://soap-to-rest.appspot.com/wsdl2proxy?wsdlUrl=' + opts.wsdlUrl + '&binding=' + opts.binding;
 
 	request(url)
   		.pipe(fs.createWriteStream('apiproxy.zip'))
   		.on('close', function () {
-   		 	console.log('File written!');
+   		 	console.log('API Proxy downloaded!');
 			fs.createReadStream('apiproxy.zip').pipe(unzip.Extract({ path: '.' }));
 		
 	    	var sdk = apigeetool.getPromiseSDK()
