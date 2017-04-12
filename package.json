@@ -1,0 +1,19 @@
+{
+  "name": "seed-wsdl-to-proxy",
+  "version": "0.0.1",
+  "description": "Converts a WSDL to an Apigee Proxy (Uses JAXB)",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "apigeetool": "*",
+    "chai": "*",
+    "gulp": "*",
+    "gulp-util": "*",
+    "request": "^2.81.0",
+    "seed-sdk": "mukundha/seed-sdk",
+    "unzip": "glebdmitriew/node-unzip-2"
+  },
+  "author": "mviswanathan@google.com",
+  "license": "Apache-2.0"
+}
